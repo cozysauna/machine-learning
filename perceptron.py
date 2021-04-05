@@ -6,7 +6,7 @@ class Perceptron(object):
     #  n_iter        : number of training times
     #  random_state  : seed
     #  errors_       : errors of every iteration
-    #  w_transition  : how weight has changed
+    #  w_transition_  : how weight has changed
 
     def __init__(self, eta = 0.01, n_iter = 50, random_state = 1):
         self.eta = eta
@@ -17,7 +17,7 @@ class Perceptron(object):
         rgen = np.random.RandomState(self.random_state)
         # Initialize
         self.w_ = rgen.normal(loc=0.0, scale = 0.01, size = 1 + X.shape[1]) # w_[0]:= Bias Unit
-        self.w_transition = []
+        self.w_transition_ = []
         self.errors_ = []
         for _ in [0] * self.n_iter:
             errors = 0
@@ -27,7 +27,7 @@ class Perceptron(object):
                 self.w_[0]  += update
                 if update != 0.0:
                     errors += 1
-                    self.w_transition.append(copy(self.w_))
+                    self.w_transition_.append(copy(self.w_))
 
             self.errors_.append(errors)
 
