@@ -37,5 +37,5 @@ class Perceptron(object):
         return np.dot(X, self.w_[1:]) + self.w_[0]
 
     def predict(self, X):
-        # Dividing the data into 1 and -1, you can change the last 0 below to -1 
-        return np.where(self.linear_combination(X) >= 0.0, 1, 0)
+        # Dividing the data into 1 and -1, you can change the last 0 below to -1 and the threshold to 0
+        return np.where(self.linear_combination(X) >= 0.5, 1, 0)
